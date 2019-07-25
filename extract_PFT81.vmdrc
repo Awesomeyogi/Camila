@@ -1,0 +1,9 @@
+#!bin/bash
+
+for {set frame 50} {$frame<301} {incr frame} {
+puts "frame is frame$frame"
+set mol [mol new ../combined_protein_water_renumbered_frame$frame.pdb waitfor all]
+set sel1 [atomselect $mol "resname PFT"]
+set fname1 [format "PFT_ext_frame_$frame.pdb"]
+$sel1 writepdb $fname1}  
+exit
